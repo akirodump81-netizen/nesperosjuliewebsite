@@ -1,0 +1,255 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RNHS Student Portal - Julie Ann Marie M. Nesperos</title><style>
+body, html{
+margin:0;
+padding:0;
+font-family: Arial, sans-serif;
+background:#eef2f5;
+}
+
+/* LOGIN */
+#loginPage{
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+background: linear-gradient(to right, #144272, #1a4571);
+}
+
+.authBox{
+background:white;
+padding:30px;
+border-radius:10px;
+width:350px;
+box-shadow:0 5px 15px rgba(0,0,0,0.3);
+text-align:center;
+}
+
+.authBox input{
+width:90%;
+padding:10px;
+margin:10px 0;
+border-radius:5px;
+border:1px solid #ccc;
+}
+
+.authBox button{
+padding:10px 25px;
+border:none;
+background:#CF9FFF;
+color:white;
+font-weight:bold;
+cursor:pointer;
+border-radius:5px;
+margin:5px;
+}
+
+/* SIGNUP PAGE */
+#signupPage{
+display:none;
+justify-content:center;
+align-items:center;
+height:100vh;
+background: linear-gradient(to right, #144272, #1a4571);
+}
+
+/* NAVIGATION */
+nav{
+background:#FF9D9D;
+text-align:center;
+padding:10px;
+}
+
+nav button{
+background:none;
+border:none;
+color:white;
+font-size:16px;
+margin:0 12px;
+cursor:pointer;
+}
+
+nav button:hover{
+color:yellow;
+}
+
+/* LOGOUT */
+#logoutBtn{
+background:#c0392b;
+border:none;
+color:white;
+padding:5px 12px;
+border-radius:5px;
+cursor:pointer;
+float:right;
+margin:5px 15px;
+}
+
+/* SECTIONS */
+section{
+display:none;
+padding:50px 20px;
+text-align:center;
+}
+
+section.active{
+display:block;
+}
+
+.card{
+background:white;
+max-width:900px;
+margin:auto;
+padding:25px;
+border-radius:10px;
+box-shadow:0 5px 20px rgba(0,0,0,0.15);
+}
+
+.hero img{
+width:200px;
+margin-bottom:15px;
+}
+
+/* STRANDS */
+.strands{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:15px;
+margin-top:20px;
+}
+
+.strandCard{
+background:#BCBBB1;
+padding:15px;
+border-radius:8px;
+}
+
+/* FOOTER */
+footer{
+background:#000000;
+color:white;
+text-align:center;
+padding:15px;
+}
+</style></head><body><!-- LOGIN PAGE --><div id="loginPage">
+<div class="authBox">
+<h2>Login to RNHS Portal</h2><input type="text" id="loginName" placeholder="Full Name"><br>
+<input type="password" id="loginPass" placeholder="Password"><br>
+
+<button onclick="login()">Login</button>
+<button onclick="openSignup()">Sign Up</button>
+
+<p id="loginError" style="color:red;"></p>
+</div>
+</div><!-- SIGN UP PAGE --><div id="signupPage">
+<div class="authBox"><h2>Create Account</h2><input type="text" id="signupName" placeholder="Full Name"><br>
+<input type="password" id="signupPass" placeholder="Password"><br>
+
+<button onclick="signup()">Create</button>
+<button onclick="backLogin()">Back</button>
+
+<p id="signupMsg"></p></div>
+</div><!-- MAIN CONTENT --><div id="mainContent" style="display:none;"><nav>
+<button onclick="showSection('home')">HOME</button>
+<button onclick="showSection('vision')">VISION & MISSION</button>
+<button onclick="showSection('strands')">STRANDS</button>
+<button onclick="showSection('events')">EVENTS</button>
+<button onclick="showSection('contact')">CONTACT</button>
+<button id="logoutBtn" onclick="logout()">LOG OUT</button>
+</nav><section id="home" class="active">
+<div class="card hero">
+<img src="c:\Users\Admin\Desktop\shula websites\8c463e09-99c1-4669-9541-efd382e520b7.jfif">
+<h2>Welcome</h2>
+<p>This is Rosales National High School Student Portal.</p>
+</div>
+</section><section id="vision">
+<div class="card">
+<h2>Vision</h2>
+<p>To be an institution of excellence in academics, leadership and community involvement.</p><h2>Mission</h2>
+<p>To provide quality education and produce responsible learners.</p>
+</div>
+</section><section id="strands">
+<div class="card">
+<h2>Senior High School Strands</h2><div class="strands">
+<div class="strandCard"><h3>STEM</h3></div>
+<div class="strandCard"><h3>ABM</h3></div>
+<div class="strandCard"><h3>HUMSS</h3></div>
+<div class="strandCard"><h3>TVL</h3></div>
+</div></div>
+</section><section id="events">
+<div class="card">
+<h2>School Events</h2><img src="c:\Users\Admin\Desktop\shula websites\316501d1-5a76-47e8-83c0-3bca92dd9cc0.jfif">
+<img src="c:\Users\Admin\Desktop\shula websites\8aaa35ea-ac33-4f9d-bb99-b92ee3cf6447.jfif">
+<img src="c:\Users\Admin\Desktop\shula websites\d02ce264-cafb-4b72-bcde-2d3b5abd268d.jfif"></div>
+</section><section id="contact">
+<div class="card"><h2>Contact Information</h2><p><b>Address:</b> Rosales National High School, Rosales, Pangasinan</p>
+<p><b>Phone:</b> (075) 582-3376</p>
+<p><b>Email:</b> julienesperos9@gmail.com</p></div>
+</section><footer>
+<p>© 2026 Rosales National High School Student Portal</p>
+</footer></div><script>
+
+/* OPEN SIGNUP */
+function openSignup(){
+document.getElementById("loginPage").style.display="none";
+document.getElementById("signupPage").style.display="flex";
+}
+
+/* BACK TO LOGIN */
+function backLogin(){
+document.getElementById("signupPage").style.display="none";
+document.getElementById("loginPage").style.display="flex";
+}
+
+/* SIGNUP */
+function signup(){
+
+let name=document.getElementById("signupName").value;
+let pass=document.getElementById("signupPass").value;
+
+localStorage.setItem("userName",name);
+localStorage.setItem("userPass",pass);
+
+document.getElementById("signupMsg").innerText="Account created!";
+
+}
+
+/* LOGIN */
+function login(){
+
+let name=document.getElementById("loginName").value;
+let pass=document.getElementById("loginPass").value;
+
+let savedName=localStorage.getItem("userName");
+let savedPass=localStorage.getItem("userPass");
+
+if(name===savedName && pass===savedPass){
+
+document.getElementById("loginPage").style.display="none";
+document.getElementById("mainContent").style.display="block";
+
+}else{
+
+document.getElementById("loginError").innerText="Incorrect login details";
+
+}
+
+}
+
+/* LOGOUT */
+function logout(){
+document.getElementById("mainContent").style.display="none";
+document.getElementById("loginPage").style.display="flex";
+}
+
+/* SECTION SWITCH */
+function showSection(sectionId){
+const sections=document.querySelectorAll("section");
+sections.forEach(sec=>sec.classList.remove("active"));
+document.getElementById(sectionId).classList.add("active");
+}
+
+</script></body>
+</html>
